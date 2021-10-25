@@ -1,19 +1,18 @@
-name: CI
+name: link-check
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      - name: Link Checker
+      - name: Check links
         uses: peter-evans/link-checker@v1.2.2
         with:
           args: -v -r README.md
