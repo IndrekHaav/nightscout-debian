@@ -1,3 +1,5 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IndrekHaav/nightscout-debian/link-check?label=link-check)
+
 # Installing Nightscout on Debian
 
 ## Background
