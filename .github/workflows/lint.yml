@@ -3,7 +3,7 @@ name: lint
 on:
   push:
     paths:
-      - ansible/**
+      - ansible/**/*.yml
   pull_request:
   workflow_dispatch:
 
