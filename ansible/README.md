@@ -1,3 +1,5 @@
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IndrekHaav/nightscout-debian/lint?label=lint)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/lint.yml)
+
 This directory contains an [Ansible](https://www.ansible.com/) role and example playbook to set up Nightscout on a Debian-based server.
 
 The role has been tested against Debian 11 "Bullseye" and Ubuntu Server 20.04. Compatibility with other versions or distros is not guaranteed.
