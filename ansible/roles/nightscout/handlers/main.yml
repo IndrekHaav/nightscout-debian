@@ -1,0 +1,13 @@
+---
+
+- name: NPM install
+  community.general.npm:
+    path: /opt/nightscout/cgm-remote-monitor
+    production: true
+  become: true
+  become_user: nightscout
+
+- name: Restart Nightscout
+  systemd:
+    name: nightscout.service
+    state: restarted

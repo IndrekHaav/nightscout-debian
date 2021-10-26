@@ -1,0 +1,2 @@
+---
+mongodb_repo: "https://repo.mongodb.org/apt/ubuntu {{ ansible_distribution_release }}/mongodb-org/4.4 multiverse"

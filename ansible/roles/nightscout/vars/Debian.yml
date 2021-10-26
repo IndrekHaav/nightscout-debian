@@ -1,0 +1,3 @@
+---
+# TODO: use {{ ansible_distribution_release }} when bullseye repo becomes available
+mongodb_repo: "http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main"

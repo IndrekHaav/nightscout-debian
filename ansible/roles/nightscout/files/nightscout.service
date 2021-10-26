@@ -1,0 +1,15 @@
+[Unit]
+Description=Nightscout CGM service
+After=network.target
+After=mongod.service
+
+[Service]
+Type=simple
+User=nightscout
+Group=nightscout
+WorkingDirectory=/opt/nightscout/cgm-remote-monitor
+EnvironmentFile=/opt/nightscout/cgm-remote-monitor/.env
+ExecStart=/usr/bin/node server.js
+
+[Install]
+WantedBy=multi-user.target

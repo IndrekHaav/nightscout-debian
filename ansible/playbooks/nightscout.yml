@@ -1,0 +1,9 @@
+---
+
+- name: Set up Nightscout
+  hosts: nightscout
+  roles:
+    - nightscout
+  vars:
+    # you can override role defaults here
+    nightscout_url: "YOUR-URL-HERE"

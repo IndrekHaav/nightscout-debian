@@ -1,0 +1,132 @@
+---
+
+- name: Include distro-specific variables
+  include_vars: '{{ ansible_distribution }}.yml'
+  tags: [nightscout]
+
+- name: Update package cache
+  apt:
+    update_cache: true
+  tags: [nightscout]
+
+- name: Install required packages
+  apt:
+    name: [acl, git, gnupg, sudo]
+    state: present
+  tags: [nightscout]
+
+- name: Add Node.js apt key
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+  tags: [nightscout]
+
+- name: Add Node.js apt repo
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_{{ nodejs_version }} {{ ansible_distribution_release }} main"
+    state: present
+    filename: nodejs
+    update_cache: true
+  tags: [nightscout]
+
+- name: Install Node.js
+  apt:
+    name: [nodejs]
+    state: present
+  tags: [nightscout]
+
+- name: Add MongoDB apt key
+  apt_key:
+    url: "https://www.mongodb.org/static/pgp/server-4.4.asc"
+    state: present
+  tags: [nightscout]
+
+- name: Add MongoDB apt repo
+  apt_repository:
+    repo: "deb {{ mongodb_repo }}"
+    state: present
+    filename: mongodb
+    update_cache: true
+  tags: [nightscout]
+
+- name: Install MongoDB
+  apt:
+    name: [mongodb-org, python3-pymongo]
+    state: present
+  tags: [nightscout]
+
+- name: Start MongoDB service
+  systemd:
+    daemon-reload: true
+    name: mongod.service
+    enabled: true
+    state: started
+  tags: [nightscout]
+
+- name: Add MongoDB admin user
+  community.mongodb.mongodb_user:
+    database: admin
+    name: admin
+    password: "{{ lookup('password', '../secrets/mongodb_admin_pw chars=ascii_letters,digits length=16') }}"
+    roles: userAdminAnyDatabase
+    state: present
+    update_password: on_create
+  tags: [nightscout]
+
+- name: Add MongoDB user for Nightscout
+  community.mongodb.mongodb_user:
+    database: nightscout
+    name: nightscout
+    password: "{{ lookup('password', '../secrets/mongodb_user_pw chars=ascii_letters,digits length=16') }}"
+    roles: readWrite
+    state: present
+    update_password: on_create
+    login_user: admin
+    login_password: "{{ lookup('password', '../secrets/mongodb_admin_pw chars=ascii_letters,digits length=16') }}"
+  tags: [nightscout]
+
+- name: Add system user for Nightscout
+  user:
+    name: nightscout
+    home: /opt/nightscout
+    system: true
+  tags: [nightscout]
+
+- name: Clone Nightscout repo
+  git:
+    repo: https://github.com/nightscout/cgm-remote-monitor.git
+    dest: /opt/nightscout/cgm-remote-monitor
+    update: true
+    force: true
+  become: true
+  become_user: nightscout
+  notify:
+    - NPM install
+    - Restart Nightscout
+  tags: [nightscout, update]
+
+- name: Configure Nightscout
+  template:
+    src: .env.j2
+    dest: /opt/nightscout/cgm-remote-monitor/.env
+    force: false
+    owner: nightscout
+    group: nightscout
+    mode: 0640
+  tags: [nightscout]
+
+- name: Create Nightscout service
+  copy:
+    src: nightscout.service
+    dest: /etc/systemd/system/nightscout.service
+    owner: root
+    group: root
+    mode: 0644
+  tags: [nightscout]
+
+- name: Enable Nightscout service
+  systemd:
+    daemon-reload: true
+    name: nightscout.service
+    enabled: true
+  tags: [nightscout]
