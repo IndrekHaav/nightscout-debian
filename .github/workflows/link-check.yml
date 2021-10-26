@@ -2,6 +2,8 @@ name: link-check
 
 on:
   push:
+    paths:
+      - '**/README.md'
   pull_request:
   workflow_dispatch:
   schedule:
