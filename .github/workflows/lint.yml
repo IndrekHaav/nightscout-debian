@@ -1,0 +1,19 @@
+name: lint
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Lint YAML files
+        uses: ibiqlik/action-yamllint@v3.1.0
+        with:
+          file_or_dir: ansible/
+          config_file: ansible/.yamllint

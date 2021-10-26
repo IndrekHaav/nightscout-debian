@@ -1,0 +1,5 @@
+---
+extends: default
+rules:
+  # don't fail on long lines
+  line-length: disable
