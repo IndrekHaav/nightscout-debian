@@ -191,6 +191,7 @@ Add the following contents:
 [Unit]
 Description=Nightscout CGM service
 After=network.target
+After=mongod.service
 
 [Service]
 Type=simple
