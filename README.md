@@ -106,7 +106,7 @@ Replace "password" with a strong password, ideally randomly generated and stored
 Instead of running Nightscout as root or your own user, it is advisable to create a separate user account for it:
 
 ```shell
-$ sudo useradd --system -m -d /opt/nightscout nightscout
+$ sudo useradd --system -m -d /opt/nightscout -s /bin/bash nightscout
 ```
 
 This will assume that all Nightscout-related files go to `/opt/nightscout`. If you would like to use another location, change it in the above and following commands.
