@@ -26,13 +26,13 @@ The following things are needed to set up Nightscout using this guide:
 
  - General Linux knowledge and the ability to manage a Debian-based system using a terminal. Although the guide contains commands you can copy&paste, it is advised that you understand what those commands do in principle.
  - A Debian-based server. This can in principle be pretty much any computer, a Raspberry Pi, a virtual machine, a VPS on a cloud provider, etc. The guide has been written for and tested on Debian 11 "Bullseye", the latest release as of the writing of this, but should also work (possibly with minor modifications) on older versions like Debian 10 "Buster", or Debian derivatives like Ubuntu or Raspbian.
- - The machine should have at least 1 GB of RAM, and potentially 2 GB is required to actually install Nightscout. This might rule out some options like Raspberry Pis and cheap VPS plans. However, with a VPS it should be possible to temporarily add more RAM when running the installation steps, and then reducing it afterwards.
+ - The machine should have at least 1 GB of RAM, and potentially 2 GB is required to actually install Nightscout. This might rule out some options like Raspberry Pis and cheap VPS plans. However, with a VPS it should be possible to temporarily add more RAM when running the installation steps, and then reduce it afterwards.
 
 ### What this guide doesn't cover
 
 This guide covers the steps needed to get Nightscout up and running, to the point of being able to load the web interface. It does **not** cover the following:
 
- - General Linux setup. It is assumed that you have SSH access to a functional Debian-based system, with a user account that has sudo rights. There are many guides for achieving this; [here is one example](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-10).
+ - General Linux setup. It is assumed that you have SSH access to a functional Debian-based system, with a user account that has sudo rights. There are many guides for achieving this; [here is one example](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-11).
  - Configuring Nightscout, including getting it to work with your particular CGM system. For that, see the official documentation at <https://nightscout.github.io/>.
  - Properly securing your Nightscout installation. Particularly when making Nightscout accessible to the entire internet (as opposed to running it on your home network only), you'll probably want to use TLS and add an authentication layer in front of Nightscout.
 
