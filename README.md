@@ -1,4 +1,4 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IndrekHaav/nightscout-debian/link-check?label=link-check)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/link-check.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/IndrekHaav/nightscout-debian/link-check.yml?branc=main&label=link-check)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/link-check.yml)
 
 # Installing Nightscout on Debian
 
