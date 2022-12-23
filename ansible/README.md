@@ -1,4 +1,4 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IndrekHaav/nightscout-debian/lint?label=lint)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/lint.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/IndrekHaav/nightscout-debian/lint.yml?branch=main&label=lint)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/lint.yml)
 
 This directory contains an [Ansible](https://www.ansible.com/) role and example playbook to set up Nightscout on a Debian-based server.
 
