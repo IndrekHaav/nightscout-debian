@@ -1,5 +1,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/IndrekHaav/nightscout-debian/link-check.yml?branc=main&label=link-check)](https://github.com/IndrekHaav/nightscout-debian/actions/workflows/link-check.yml)
 
+**Repository moved to: https://codeberg.org/indrek/nightscout-debian**
+
 # Installing Nightscout on Debian
 
 ## Background
